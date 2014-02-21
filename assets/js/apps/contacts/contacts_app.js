@@ -10,9 +10,9 @@ ContactManager.module('ContactsApp', function(ContactsApp,ContactManager,Backbon
 
 	var API = {
 		listContacts: function(){
-			console.log("Made it to list contacts inside contacts_app sub.");
+			
 			ContactsApp.List.Controller.listContacts();
-			console.log("route to list contacts was triggered");
+			
 		},
 		showContact:function(id){
 			ContactsApp.Show.Controller.showContact(id);
