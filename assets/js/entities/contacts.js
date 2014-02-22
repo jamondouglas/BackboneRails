@@ -22,7 +22,6 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 	Entities.configureStorage(Entities.ContactCollection);
 
 	var initializeContacts = function() {
-		console.log("loading up our contacts");
 		contacts = new Entities.ContactCollection([
 			{
 				id: 1,
@@ -53,11 +52,10 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 		contacts.forEach(function(contact) {
 			contact.save();
 		});
-		return contacts.model;
+		return contacts.models;
 	};
 	var API = {
 		getContactsEntities: function() {
-			console.log("get contact entities");
 			/*if(contacts === undefined){
 				initializeContacts();
 			}*/
@@ -71,8 +69,6 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 			var promise = defer.promise();
 			$.when(promise).done(function(contacts) {
 				if (contacts.length === 0) {
-					debugger;
-					console.log("abotu to load up contacts");
 					var models = initializeContacts();
 					contacts.reset(models);
 				}
@@ -80,11 +76,13 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 			return promise;
 		},
 		getContactEntity: function(contactId) {
-			console.log("get contact entity");
+			
 			var contact = new Entities.Contact({
 				id: contactId
 			});
+
 			var defer = $.Deferred();
+			setTimeout(function(){
 			contact.fetch({
 				success: function(data) {
 					defer.resolve(data);
@@ -93,6 +91,7 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 					defer.resolve(undefined);
 				}
 			});
+		},2000);
 			return defer.promise();
 		}
 	};

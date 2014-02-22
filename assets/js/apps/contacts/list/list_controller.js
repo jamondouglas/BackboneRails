@@ -1,7 +1,7 @@
 ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbone, Marionette, $, _) {
 	List.Controller = {
 		listContacts: function() {
-			debugger;
+			var loadingView= new ContactManager.Common.Views.Loading();
 			var fetchingContacts = ContactManager.request("contact:entities");
 
 			$.when(fetchingContacts).done(function(contacts) {
