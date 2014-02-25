@@ -17,9 +17,9 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 		},
 
 		defaults: {
-			firstName: 'Jam The Man',
-			lastName: 'Douglas',
-			phoneNumber: 'No phone number saved'
+			firstName: 'Enter First Name',
+			lastName: 'Enter Last Name',
+			phoneNumber: 'Enter phone number'
 		}
 	});
 
